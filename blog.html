@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chronicle Corner | Personal Blog</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5', // Indigo-600
+                        'secondary': '#f3f4f6', // Gray-100
+                        'accent': '#f97316', // Orange-600
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles for a clean look */
+        body {
+            background-color: #f9fafb; /* Lighter background */
+            color: #1f2937; /* Dark gray text */
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        /* Custom scrollbar to keep it sleek */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9ca3af;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <!-- Logo/Site Title -->
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="#" class="text-2xl font-bold text-primary hover:text-accent transition duration-300">
+                        The Chronicle Corner
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#" class="text-base font-medium text-gray-500 hover:text-primary transition duration-300">Home</a>
+                    <a href="#featured" class="text-base font-medium text-gray-500 hover:text-primary transition duration-300">Featured</a>
+                    <a href="#posts" class="text-base font-medium text-gray-500 hover:text-primary transition duration-300">All Posts</a>
+                    <a href="#about" class="text-base font-medium text-gray-500 hover:text-primary transition duration-300">About Me</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 -my-2 md:hidden">
+                    <button type="button" id="menu-button"
+                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition duration-150 ease-in-out"
+                        aria-expanded="false">
+                        <span class="sr-only">Open menu</span>
+                        <!-- Heroicon name: menu -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div class="absolute top-16 inset-x-0 p-2 transition transform origin-top-right md:hidden hidden" id="mobile-menu">
+            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                <div class="pt-5 pb-6 px-5">
+                    <div class="space-y-6">
+                        <nav class="grid gap-y-8">
+                            <a href="#" class="text-base font-medium text-gray-900 hover:text-primary">Home</a>
+                            <a href="#featured" class="text-base font-medium text-gray-900 hover:text-primary">Featured</a>
+                            <a href="#posts" class="text-base font-medium text-gray-900 hover:text-primary">All Posts</a>
+                            <a href="#about" class="text-base font-medium text-gray-900 hover:text-primary">About Me</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-12 bg-white p-8 sm:p-12 rounded-xl shadow-lg border-t-4 border-primary">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                Life, Work, & Everything In Between
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Welcome to my little space on the internet. Expect chronicles of coding triumphs, travel mishaps, and the best coffee recipes.
+            </p>
+        </section>
+
+        <!-- Featured Post Section -->
+        <section id="featured" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2 border-primary/20">Featured Insight</h2>
+            <div id="featured-post-container">
+                <!-- Featured post will be injected here by JS -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden md:flex">
+                    <div class="md:flex-shrink-0 w-full md:w-1/3">
+                        <img class="h-48 w-full object-cover md:h-full" 
+                            src="https://placehold.co/600x400/818cf8/ffffff?text=Deep+Dive" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x400/818cf8/ffffff?text=Deep+Dive';"
+                            alt="Placeholder image for a deep dive article">
+                    </div>
+                    <div class="p-8 md:w-2/3">
+                        <div class="uppercase tracking-wide text-sm text-accent font-semibold">Productivity</div>
+                        <a href="#" class="block mt-1 text-2xl leading-tight font-medium text-black hover:underline">The 5 AM Club (and Why I Quit It)</a>
+                        <p class="mt-2 text-gray-600">
+                            Everyone talks about the magic of waking up before dawn. I tried it for a month, and while I learned a lot, I also realized that some 'rules' are meant to be broken. Here’s a raw look at my experience and what actually works for my creative flow.
+                        </p>
+                        <div class="mt-4 text-sm text-gray-400">
+                            <span class="font-medium">J. Doe</span> &bull; October 25, 2025 &bull; 5 min read
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Posts Grid -->
+        <section id="posts">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2 border-primary/20">Latest Posts</h2>
+
+            <!-- This container will hold all the dynamically generated blog post cards -->
+            <div id="blog-posts-container" 
+                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Post Cards will be injected here by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-sm">&copy; 2025 The Chronicle Corner. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                    <a href="https://twitter.com/johndoe" target="_blank" class="text-gray-400 hover:text-primary transition duration-300" aria-label="Twitter link">
+                        <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22.25 6.224c-.58.257-1.2.43-1.85.51a3.687 3.687 0 001.62-1.77c-.6.357-1.27.62-1.97.766a3.687 3.687 0 00-6.282 3.364c-3.06-.15-5.783-1.625-7.59-3.856a3.687 3.687 0 001.14 4.904c-.555-.018-1.077-.168-1.532-.423v.047a3.687 3.687 0 002.955 3.61c-.534.145-1.096.177-1.678.064a3.687 3.687 0 003.444 2.56c-1.87 1.47-4.238 2.348-6.797 2.348-.442 0-.877-.024-1.306-.075a10.435 10.435 0 0011.3 3.3c7.098-5.61 10.992-12.723 10.992-19.984 0-.306-.007-.61-.02-.91a7.844 7.844 0 001.93-2.007z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity and content loading -->
+    <script>
+        // --- Mock Data for Blog Posts ---
+        const blogPosts = [
+            {
+                id: 1,
+                title: "My First Week With Rust: A Love/Hate Relationship",
+                category: "Tech & Coding",
+                summary: "Diving into the world of ownership and borrowing. It was painful, but rewarding. Here's why I think Rust might be worth the steep learning curve for performance-critical applications.",
+                author: "J. Doe",
+                date: "November 1, 2025",
+                readTime: "7 min read",
+                image: "https://placehold.co/600x400/4f46e5/ffffff?text=Rust+Code"
+            },
+            {
+                id: 2,
+                title: "The Subtle Art of Making Excellent Pesto",
+                category: "Recipes & Food",
+                summary: "It's not just basil, pine nuts, and oil. The secret lies in the quality of the Parmesan and a specific technique for crushing the garlic. My Italian grandmother's method revealed.",
+                author: "J. Doe",
+                date: "October 28, 2025",
+                readTime: "4 min read",
+                image: "https://placehold.co/600x400/10b981/ffffff?text=Pesto"
+            },
+            {
+                id: 3,
+                title: "Digital Nomad Life: Is It as Glamorous as Instagram Makes It Seem?",
+                category: "Travel & Lifestyle",
+                summary: "Spoiler: the Wi-Fi is terrible, and the jet lag is real. But the sunsets? Worth every moment of stress. A realistic look at the highs and lows of working from anywhere.",
+                author: "J. Doe",
+                date: "October 20, 2025",
+                readTime: "8 min read",
+                image: "https://placehold.co/600x400/f59e0b/ffffff?text=Nomad"
+            },
+            {
+                id: 4,
+                title: "Review: The New 'Interstellar' Rerelease Soundtrack",
+                category: "Culture & Media",
+                summary: "Hans Zimmer strikes again. A breakdown of the newly mastered vinyl and why certain tracks hit differently when you're not in a movie theater.",
+                author: "J. Doe",
+                date: "October 15, 2025",
+                readTime: "6 min read",
+                image: "https://placehold.co/600x400/9333ea/ffffff?text=Music"
+            },
+            {
+                id: 5,
+                title: "A Beginner's Guide to Home Automation with Python",
+                category: "Tech & Coding",
+                summary: "Turning on my lights using a simple Python script felt like a major hack. This guide covers the cheapest hardware and the easiest libraries to get started.",
+                author: "J. Doe",
+                date: "October 10, 2025",
+                readTime: "10 min read",
+                image: "https://placehold.co/600x400/3b82f6/ffffff?text=Automation"
+            },
+            {
+                id: 6,
+                title: "Five Reasons Why You Should Start Journaling Today",
+                category: "Lifestyle",
+                summary: "It's more than just writing down your feelings. It's a powerful tool for clarity, gratitude, and tracking your mental state. I share my favorite prompts.",
+                author: "J. Doe",
+                date: "October 5, 2025",
+                readTime: "5 min read",
+                image: "https://placehold.co/600x400/ef4444/ffffff?text=Journal"
+            }
+        ];
+
+        // Function to map categories to Tailwind colors for visual flair
+        const categoryColorMap = {
+            'Tech & Coding': 'text-primary border-primary',
+            'Recipes & Food': 'text-green-600 border-green-600',
+            'Travel & Lifestyle': 'text-yellow-600 border-yellow-600',
+            'Culture & Media': 'text-purple-600 border-purple-600',
+            'Productivity': 'text-red-600 border-red-600',
+            'Lifestyle': 'text-pink-600 border-pink-600',
+        };
+
+        /**
+         * Generates the HTML for a single blog post card.
+         * @param {object} post - The post data object.
+         * @returns {string} The HTML string for the post card.
+         */
+        function createPostCard(post) {
+            const categoryClass = categoryColorMap[post.category] || 'text-gray-500 border-gray-500';
+
+            return `
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 overflow-hidden flex flex-col">
+                    <!-- Post Image -->
+                    <img class="w-full h-48 object-cover" 
+                        src="${post.image}" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/6b7280/ffffff?text=Post+Image';"
+                        alt="Image for ${post.title}">
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Category Tag -->
+                        <span class="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 mb-3 rounded-full border ${categoryClass}">
+                            ${post.category}
+                        </span>
+
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">
+                            <a href="#" class="hover:text-primary transition duration-300">${post.title}</a>
+                        </h3>
+
+                        <!-- Summary -->
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">
+                            ${post.summary}
+                        </p>
+                        
+                        <!-- Metadata -->
+                        <div class="text-xs text-gray-400 border-t pt-3">
+                            <span>${post.author}</span> &bull; 
+                            <span>${post.date}</span> &bull; 
+                            <span>${post.readTime}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Renders all blog posts into the main container.
+         */
+        function renderBlogPosts() {
+            const container = document.getElementById('blog-posts-container');
+            if (container) {
+                // Generate HTML for all posts
+                const postsHtml = blogPosts.map(createPostCard).join('');
+                container.innerHTML = postsHtml;
+            }
+        }
+
+        /**
+         * Toggles the visibility of the mobile menu.
+         */
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const isHidden = menu.classList.contains('hidden');
+
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                menu.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        // --- Event Listeners and Initialization ---
+        window.onload = function() {
+            // 1. Initialize Post Rendering
+            renderBlogPosts();
+
+            // 2. Set up Mobile Menu Toggle
+            const menuButton = document.getElementById('menu-button');
+            if (menuButton) {
+                menuButton.addEventListener('click', toggleMobileMenu);
+            }
+
+            // 3. Hide mobile menu when a link is clicked
+            const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    document.getElementById('menu-button').setAttribute('aria-expanded', 'false');
+                });
+            });
+        };
+    </script>
+
+</body>
+</html>
